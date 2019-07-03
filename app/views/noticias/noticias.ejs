@@ -2,11 +2,37 @@
 	<html lang="pt-br">
 		<head>
 			<meta charset="utf-8"/>
-			<title>Notícias</title>
+			<title>NotÃ­cias</title>
 		</head>
 	<body>
 
-		<h1>Notícias</h1>
+		<h1>NotÃ­cias</h1>
+		<table>
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Titulo</td>
+					<td>Noticia</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% noticias.forEach(function(noticia, index) { %>
+                    <tr>
+                        <td><%- noticia.id %></td>
+						<td><%- noticia.titulo %></td>
+						<td><%- noticia.noticia %></td>
+                    </tr>
+				<% }) %>
+				<!-- Outra forma de fazer o loop -->
+				<% for (var i = 0; i < noticias.length; i++) { %>
+					<tr>
+						<td><%= noticias[i].id %></td>
+						<td><%= noticias[i].titulo %></td>
+						<td><%= noticias[i].noticia %></td>
+					</tr>
+				<% } %>
+			</tbody>
+		</table>
 
 	</body>
 </html>

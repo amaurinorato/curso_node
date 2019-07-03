@@ -1,4 +1,5 @@
 var app = require('./config/server');
+var consign = require('consign');
 
 var noticiasRoute = require('./app/routes/noticias');
 var homeRoute = require('./app/routes/home')
