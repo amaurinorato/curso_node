@@ -7,12 +7,11 @@
 	<body>
 
 		<h1>Notícias</h1>
-		<table>
+		<table style="padding: 5px">
 			<thead>
 				<tr>
 					<td>Id</td>
 					<td>Titulo</td>
-					<td>Noticia</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -20,7 +19,6 @@
                     <tr>
                         <td><%- noticia.id %></td>
 						<td><%- noticia.titulo %></td>
-						<td><%- noticia.noticia %></td>
                     </tr>
 				<% }) %>
 				<!-- Outra forma de fazer o loop -->
@@ -28,7 +26,6 @@
 					<tr>
 						<td><%= noticias[i].id %></td>
 						<td><%= noticias[i].titulo %></td>
-						<td><%= noticias[i].noticia %></td>
 					</tr>
 				<% } %>
 			</tbody>
