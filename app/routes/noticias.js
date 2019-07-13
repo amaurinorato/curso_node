@@ -7,8 +7,8 @@ module.exports = function(app) {
     
     app.get('/noticias', function(req, res) {
         var connection = app.config.dbConnection();
-        var noticiaModel = app.app.models.noticia;
-        noticiaModel.getNoticias(connection, function(error, result) {
+        var noticiaModel = new app.app.models.NoticiasDAO(connection);
+        noticiaModel.getNoticias(function(error, result) {
             res.render('noticias/noticias', {noticias: result});
         });
     })
@@ -21,18 +21,20 @@ module.exports = function(app) {
     
     .get('/noticia/:id', function(req, res) {
         var connection = app.config.dbConnection();
-        var noticiaModel = app.app.models.noticia;
-        noticiaModel.getNoticia(connection, req.params.id, function(error, result) {
+        var noticiaModel = new app.app.models.NoticiasDAO(connection);
+        noticiaModel.getNoticia(req.params.id, function(error, result) {
             res.render('noticias/noticia', {noticia: result});
         });
     })
     
-    .post('/noticia/incluir', function(req, res){
-        console.log('postou');
+    .post('/noticias', function(req, res) {
+        var noticia = req.body;
+
         var connection = app.config.dbConnection();
-        var noticiaModel = app.app.models.noticia;
-        noticiaModel.getNoticias(connection, function(error, result) {
-            res.render('noticias/noticias', {noticias: result});
+        var noticiaModel = new app.app.models.NoticiasDAO(connection);
+
+        noticiaModel.salvarNoticia(noticia, function(error, result) {
+            res.redirect('/noticias');
         });
     })
     ;
